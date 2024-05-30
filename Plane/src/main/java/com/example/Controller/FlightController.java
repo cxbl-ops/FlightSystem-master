@@ -1,6 +1,9 @@
 package com.example.Controller;
 
+import cn.hutool.core.lang.Dict;
+import cn.hutool.json.JSONArray;
 import com.example.Service.FlightService;
+import com.example.WeBaseUtil.api;
 import com.example.vo.Flight;
 import com.example.vo.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
@@ -38,18 +41,19 @@ public class FlightController {
     @PostMapping("/insertFlight")
     public ResponseResult insertFlight(@RequestBody Flight flight) {
         System.out.println(flight);
-//        JSONArray _flightInfo = new JSONArray();
-//        _flightInfo.put(flight.getFlightId());
-//        _flightInfo.put(flight.getPlanTime());
-//        _flightInfo.put(flight.getEstimatedTime());
-//        _flightInfo.put(flight.getActualTime());
-//        _flightInfo.put(flight.getActualArrived());
-//        _flightInfo.put(flight.getDeparture());
-//        _flightInfo.put(flight.getDestination());
-//        _flightInfo.put(flight.getDelay());
+        JSONArray _flightInfo = new JSONArray();
+        _flightInfo.put(flight.getFlightId());
+        _flightInfo.put(flight.getPlanTime());
+        _flightInfo.put(flight.getEstimatedTime());
+        _flightInfo.put(flight.getActualTime());
+        _flightInfo.put(flight.getActualArrived());
+        _flightInfo.put(flight.getDeparture());
+        _flightInfo.put(flight.getDestination());
+        _flightInfo.put(flight.getDelay());
 //
-//        Dict getResult = api.LocalSign("Flight", "0x3cc63a99e689fbf77c1f577a01f54b7aa8e9c8ae", "addFlight", _flightInfo,  "[{\"constant\":false,\"inputs\":[{\"components\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"flightId\",\"type\":\"string\"},{\"name\":\"planTime\",\"type\":\"string\"},{\"name\":\"estimatedTime\",\"type\":\"string\"},{\"name\":\"actualTime\",\"type\":\"string\"},{\"name\":\"actualArrived\",\"type\":\"string\"},{\"name\":\"departure\",\"type\":\"string\"},{\"name\":\"destination\",\"type\":\"string\"},{\"name\":\"delay\",\"type\":\"bool\"}],\"name\":\"_flightInfo\",\"type\":\"tuple\"}],\"name\":\"addFlight\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"name\":\"flights\",\"outputs\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"flightId\",\"type\":\"string\"},{\"name\":\"planTime\",\"type\":\"string\"},{\"name\":\"estimatedTime\",\"type\":\"string\"},{\"name\":\"actualTime\",\"type\":\"string\"},{\"name\":\"actualArrived\",\"type\":\"string\"},{\"name\":\"departure\",\"type\":\"string\"},{\"name\":\"destination\",\"type\":\"string\"},{\"name\":\"delay\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]");
-
+        Dict getResult = api.LocalSign("Flight", "0xf6971570cf32251b0653b25a31025f0eeb7384ec", "addFlight", _flightInfo,
+        "[{\"constant\":false,\"inputs\":[{\"name\":\"_flightId\",\"type\":\"string\"},{\"name\":\"_planTime\",\"type\":\"string\"},{\"name\":\"_estimatedTime\",\"type\":\"string\"},{\"name\":\"_actualTime\",\"type\":\"string\"},{\"name\":\"_actualArrived\",\"type\":\"string\"},{\"name\":\"_departure\",\"type\":\"string\"},{\"name\":\"_destination\",\"type\":\"string\"},{\"name\":\"_delay\",\"type\":\"bool\"}],\"name\":\"addFlight\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_flightId\",\"type\":\"string\"}],\"name\":\"getFlightInfoByFlightId\",\"outputs\":[{\"components\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"flightId\",\"type\":\"string\"},{\"name\":\"planTime\",\"type\":\"string\"},{\"name\":\"estimatedTime\",\"type\":\"string\"},{\"name\":\"actualTime\",\"type\":\"string\"},{\"name\":\"actualArrived\",\"type\":\"string\"},{\"name\":\"departure\",\"type\":\"string\"},{\"name\":\"destination\",\"type\":\"string\"},{\"name\":\"delay\",\"type\":\"bool\"}],\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"name\":\"flights\",\"outputs\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"flightId\",\"type\":\"string\"},{\"name\":\"planTime\",\"type\":\"string\"},{\"name\":\"estimatedTime\",\"type\":\"string\"},{\"name\":\"actualTime\",\"type\":\"string\"},{\"name\":\"actualArrived\",\"type\":\"string\"},{\"name\":\"departure\",\"type\":\"string\"},{\"name\":\"destination\",\"type\":\"string\"},{\"name\":\"delay\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]");
+        System.out.println("getResult:"+ getResult);
         return new ResponseResult<>(200, flightService.insertFlight(flight));
 //        return  new ResponseResult<>(200,getResult);
     }
