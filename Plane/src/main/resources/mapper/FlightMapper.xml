@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Mapper.FlightMapper">
+    <select id="selectFlightList" parameterType="flight" resultType="flight">
+        select * from tb_flight
+    </select>
+    <select id="selectFlightById" resultType="com.example.vo.Flight">
+        select * from tb_flight where flightId =  #{flightId}
+    </select>
+
+    <update id="editFlight" parameterType="flight" >
+        UPDATE tb_flight
+        SET
+            flightId = #{flightId},
+            planTime = #{planTime},
+            estimatedTime = #{estimatedTime},
+            actualTime = #{actualTime},
+            actualArrived = #{actualArrived},
+            departure = #{departure},
+            destination = #{destination},
+            delay = #{delay},
+            isCompleted = #{isCompleted}
+        WHERE
+            id = #{id}
+    </update>
+
+    <delete id="deleteFlightById" parameterType="flight" >
+        DELETE FROM tb_flight WHERE id=#{id}
+    </delete>
+    <insert id="insertFlight" parameterType="flight">
+    insert into tb_flight(flightId,planTime,estimatedTime,actualTime,actualArrived,departure,destination,delay,isCompleted) values (#{flightId},#{planTime},#{estimatedTime},#{actualTime},#{actualArrived},#{departure},#{destination},#{delay},#{isCompleted})
+    </insert>
+    <select id="search" resultType="flight">
+        select * from tb_flight where flightId like #{flightId}
+    </select>
+</mapper>

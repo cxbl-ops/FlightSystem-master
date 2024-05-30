@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Mapper.UserMapper">
+    <select id="login" parameterType="com.example.vo.User" resultType="com.example.vo.User">
+        select * from tb_user where username=#{username} and account=#{account} and passwd=#{passwd}
+    </select>
+    <insert id="register" parameterType="com.example.vo.User">
+        insert into tb_user(username,account,passwd) values (#{username},#{account},#{passwd})
+    </insert>
+</mapper>
