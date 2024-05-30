@@ -10,6 +10,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
+//todo 异常枚举类
 public enum RespBeanEnum {
     SUCCESS(200,"成功"),
     ERROR(500,"失败"),
