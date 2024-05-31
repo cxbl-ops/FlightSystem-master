@@ -19,7 +19,6 @@ public class FlightController {
 
     @GetMapping("/selectFlight")
     public ResponseResult selectFlight() {
-
         return new ResponseResult<>(200, flightService.selectFlightList());
     }
 
