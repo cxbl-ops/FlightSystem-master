@@ -3,26 +3,26 @@ package com.example.Controller;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.json.JSONArray;
 import com.example.Service.UserService;
-
+import com.example.WeBaseUtil.api;
 import com.example.vo.ResponseResult;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import com.example.WeBaseUtil.api;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @RequiredArgsConstructor
 @RestController
 public class UserController {
+
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     final UserService userService;
@@ -32,9 +32,7 @@ public class UserController {
         // 获取用户输入的用户名和密码
         String username = user.getUsername();
         String password = user.getPasswd();
-
         // 从数据库中获取用户信息
-
         if (username == null && password == null) {
             // 用户不存在
             return new ResponseResult<>(400, "用户名或密码不正确");
@@ -99,6 +97,20 @@ public class UserController {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+    @PostMapping("/updateUserInfo")
+    public ResponseResult<User> updateUserInfo(@RequestBody User user) {
+        if (userService.updateUserInfo(user) == 0) {
+            return new ResponseResult<>(400, "更新失败");
+        }
+            return new ResponseResult<>(200, "更新成功");
+        }
+        @PostMapping("/delUserInfo")
+    public ResponseResult<User> delUserInfo(@RequestBody User user) {
+        if (userService.delUserInfo(user) == 0) {
+            return new ResponseResult<>(400, "删除失败");
+        }
+        return new ResponseResult<>(200, "删除成功");
     }
 
 }
