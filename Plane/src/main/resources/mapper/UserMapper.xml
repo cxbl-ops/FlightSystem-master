@@ -9,4 +9,11 @@
     <insert id="register" parameterType="com.example.vo.User">
         insert into tb_user(username,account,passwd) values (#{username},#{account},#{passwd})
     </insert>
+    <update id="updateUserInfo" parameterType="com.example.vo.User">
+
+        update tb_user set username=#{username},account=#{account},passwd=#{passwd} where id=#{id}
+    </update>
+    <delete id="delUserInfo" parameterType="com.example.vo.User">
+        delete from tb_user where id=#{id}
+    </delete>
 </mapper>
