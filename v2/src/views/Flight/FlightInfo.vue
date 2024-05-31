@@ -381,9 +381,9 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
-  //width: 500px;
 
-}
+
+},
 .main-center {
   margin-left: 200px; /* 留出菜单的宽度 */
   padding: 20px;
