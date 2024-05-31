@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class FlightController {
     @Resource
     private  FlightService flightService;
-
+    //todo 查询航班信息
     @GetMapping("/selectFlight")
     public ResponseResult selectFlight() {
         return new ResponseResult<>(200, flightService.selectFlightList());
