@@ -1,18 +1,6 @@
 
 <template>
-  <el-container style="height: 900px">
-    <el-aside width="200px">
-      <el-menu :default-openeds="['1', '3']" @select="handleSelect">
-        <el-submenu index="1">
-          <template slot="title"><i class="el-icon-message"></i>主页</template>
-          <el-menu-item-group>
-            <el-menu-item index="1-1">航班信息</el-menu-item>
-            <el-menu-item index="1-2">用户管理</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-      </el-menu>
-    </el-aside>
-    <el-main>
+    <el-main class="main-center">
       <div  v-loading="loading" element-loading-text="加载中">
         <div class="table">
           <div class="add">
@@ -54,14 +42,14 @@
       </div>
       <FlightDialog :visible.sync="dialogFormVisible" :edit="edit" :country="country" :casProps="casProps" @save="saveFlightEdit"/>
     </el-main>
-  </el-container>
+
 </template>
 
 <script>
 import FlightDialog from './FlightDialog.vue';
-import { editFlight, addFlight, search } from "@/api/home";
-import { selectCountry, selectCity, selectAir } from "@/api/air";
-import { queryPageByFlight, deleteFlightById } from "@/api/page";
+import {addFlight, editFlight, search} from "@/api/home";
+import {selectAir, selectCity, selectCountry} from "@/api/air";
+import {queryPageByFlight} from "@/api/page";
 import axios from "axios";
 
 export default {
@@ -143,14 +131,6 @@ export default {
   },
 
   methods: {
-
-  handleSelect(index) {
-    if (index === '1-1') {
-      this.$router.push('/home');
-    } else if (index === '1-2') {
-      this.$router.push('/user');
-    }
-  },
   handlePrevClick() {
     this.queryParam.currentPage -= 1;
     this.loadData();
@@ -401,8 +381,12 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 500px;
 
+
+},
+.main-center {
+  margin-left: 200px; /* 留出菜单的宽度 */
+  padding: 20px;
 }
 
 

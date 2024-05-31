@@ -35,4 +35,14 @@ public class UserServiceimpl implements UserService {
        return  !existingUser;
 
     }
+
+    @Override
+    public int updateUserInfo(User user) {
+        return userMapper.updateUserInfo(user);
+    }
+
+    @Override
+    public int delUserInfo(User user) {
+        return userMapper.delUserInfo(user);
+    }
 }

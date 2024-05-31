@@ -1,12 +1,10 @@
 import login from '@/views/User/login.vue'
-import home from '@/views/home.vue'
 import register from '@/views/User/register.vue'
-import user from '@/views/user.vue'
 import FlightInfo from "@/views/Flight/FlightInfo.vue";
-
+import UserInfo from "@/views/User/UserInfo.vue";
+import index from "@/views/index.vue";
 
 const routes = [
- 
   {
     name: 'login',
     path: '/login',
@@ -21,38 +19,24 @@ const routes = [
     path: "/",
     redirect: "/login",
   },
-  // {
-  //   name: 'home',
-  //   path: '/home',
-  //   component: home,
-  // },
   {
-    name:'FlightInfo',
-    path:'/FlightInfo',
-    component: FlightInfo,
-  },
+    name: "index",
+    path: "/index",
 
-  {
-    name: "user",
-    path: '/user',
-    component: user,
-  },
+    children: [
+      {
 
-  // {
-  //   name: "index",
-  //   path: "/index",
-  //   component: index,
-  // },
-  // {
-  //   path: '/flight-info',
-  //   name: 'FlightInfo',
-  //   component: FlightInfo
-  // },
-  // {
-  //   path: '/user-management',
-  //   name: 'UserManagement',
-  //   component: UserManagement
-  // }
+        path: "FlightInfo",
+        component: FlightInfo,
+      },
+      {
+
+        path: "userInfo",
+        component: UserInfo
+      }
+    ],
+    component: index
+  }
 ]
 
 export default routes
