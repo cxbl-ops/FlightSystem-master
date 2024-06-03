@@ -383,7 +383,7 @@ export default {
   align-content: center;
 
 
-},
+}
 .main-center {
   margin-left: 200px; /* 留出菜单的宽度 */
   padding: 20px;
