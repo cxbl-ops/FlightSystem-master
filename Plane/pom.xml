@@ -74,6 +74,11 @@
         <artifactId>geoip2</artifactId>
         <version>2.15.0</version>
     </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+            <version>3.2.5</version>
+        </dependency>
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on &ndash;&gt;-->
 <!--        <dependency>-->

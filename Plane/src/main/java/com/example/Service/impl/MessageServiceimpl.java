@@ -1,7 +1,8 @@
 package com.example.Service.impl;
 
 import com.example.Service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
 
 @Service
 public class MessageServiceimpl implements MessageService {
+    private static final Logger log = LoggerFactory.getLogger(MessageServiceimpl.class);
     @Resource
     JavaMailSender javaMailSender;
 
@@ -36,7 +38,7 @@ public class MessageServiceimpl implements MessageService {
             javaMailSender.send(message);
             return true;
         } catch (MailException e) {
-            e.printStackTrace();
+           log.error("邮件发送失败");
         }
         return false;
     }

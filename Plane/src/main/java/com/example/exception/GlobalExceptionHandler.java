@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)//处理哪些异常
     public RespBean ExceptionHandler(Exception e,HttpServletRequest request){
         //打印日志
-        logger.error("Request URL : {}，Exception : {}", request.getRequestURL(),e);
+        logger.error("Request URL : {}，Exception : {}", request.getRequestURL(), e.getMessage(),e);
 
         if(e instanceof GlobalException){//之前自定义的异常
             GlobalException ex = (GlobalException) e;
