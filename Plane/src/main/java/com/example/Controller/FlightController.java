@@ -21,7 +21,7 @@ public class FlightController {
     public ResponseResult selectFlight() {
         return new ResponseResult<>(200, flightService.selectFlightList());
     }
-
+    //修改航班信息
     @PostMapping("/editFlight")
     public ResponseResult editFlight(@RequestBody Flight flight) {
        int res = flightService.editFlight(flight);
@@ -29,14 +29,14 @@ public class FlightController {
         System.out.println(flight);
             return new ResponseResult<>(200, flightService.editFlight(flight));
     }
-
+    //删除航班信息
     @PostMapping("/deleteFlightById")
     public ResponseResult deleteFlightById(@RequestBody Flight flight)  {
 
         return new ResponseResult<>(200, flightService.deleteFlightById(flight));
 
     }
-
+//添加航班信息
     @PostMapping("/insertFlight")
     public ResponseResult insertFlight(@RequestBody Flight flight) {
         System.out.println(flight);
@@ -56,11 +56,13 @@ public class FlightController {
         return new ResponseResult<>(200, flightService.insertFlight(flight));
 //        return  new ResponseResult<>(200,getResult);
     }
+    //查询
     @GetMapping("/selectFlightById")
     public  ResponseResult getFlight(int id){
         System.out.println(id);
         return new ResponseResult(200,flightService.selectFlightById(id));
     }
+    //搜索
     @GetMapping("/search/{flightId}")
     public  ResponseResult search(@PathVariable String flightId){
         Flight flight = new Flight();

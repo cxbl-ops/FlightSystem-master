@@ -8,15 +8,15 @@
                             :value-format="'yyyy-MM-dd hh:mm:ss'" placeholder="选择日期时间"></el-date-picker>
           </el-form-item>
           <el-form-item label="预计到达时间" label-width="120px">
-            <el-date-picker format="yyyy-MM-dd hh:mm:ss" type="datetime" v-model="edit.estimatedTime"
+            <el-date-picker id="estimatedTime" v-model="edit.estimatedTime" format="yyyy-MM-dd hh:mm:ss" type="datetime"
                             :value-format="'yyyy-MM-dd hh:mm:ss'" placeholder="选择日期时间"></el-date-picker>
           </el-form-item>
           <el-form-item label="实际起飞时间" label-width="120px">
-            <el-date-picker v-model="edit.actualTime" type="datetime" format="yyyy-MM-dd hh:mm:ss"
+            <el-date-picker id="actualTime" v-model="edit.actualTime" format="yyyy-MM-dd hh:mm:ss" type="datetime"
                             :value-format="'yyyy-MM-dd hh:mm:ss'" placeholder="选择日期时间"></el-date-picker>
           </el-form-item>
           <el-form-item label="实际到达时间" label-width="120px">
-            <el-date-picker v-model="edit.actualArrived" type="datetime" format="yyyy-MM-dd hh:mm:ss"
+            <el-date-picker id="actualArrived" v-model="edit.actualArrived" format="yyyy-MM-dd hh:mm:ss" type="datetime"
                             :value-format="'yyyy-MM-dd hh:mm:ss'" placeholder="选择日期时间"></el-date-picker>
           </el-form-item>
         </el-col>
