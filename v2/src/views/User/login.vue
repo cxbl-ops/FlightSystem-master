@@ -119,12 +119,12 @@ export default {
 </script>
 
 <style scoped>
-.el-card {
-    width: 500px;
-    height: 300px;
-    margin: 0 auto;
-    text-align: center;
-}
+//.el-card {
+//    width: 500px;
+//    height: 300px;
+//    margin: 0 auto;
+//    text-align: center;
+//}
 
 .link {
     width: 100%;

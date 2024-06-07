@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
     //调试日志
-    private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(Exception.class)//处理哪些异常
     public RespBean ExceptionHandler(Exception e,HttpServletRequest request){

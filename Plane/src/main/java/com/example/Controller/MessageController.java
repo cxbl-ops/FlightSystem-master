@@ -1,15 +1,14 @@
 package com.example.Controller;
 
 import cn.hutool.core.util.RandomUtil;
-import com.example.vo.ResponseResult;
+import com.example.Service.MessageService;
 import com.example.vo.Code;
 import com.example.vo.EmailMessage;
-import com.example.Service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.vo.ResponseResult;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import com.example.vo.Code;
+
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
@@ -42,7 +41,7 @@ public class MessageController {
         RandomMath = RandomUtil.randomNumbers(6);
         System.out.println("随机验证码为" + RandomMath);
         // 构建一个邮件对象
-        Boolean mail = messageService.sendMail(RandomMath, getPeople);
+        boolean mail = messageService.sendMail(RandomMath, getPeople);
         if (mail) {
             //设置有效时间,这里是30秒，
             redisTemplate.opsForValue().set(getPeople, RandomMath, 60, TimeUnit.SECONDS);
