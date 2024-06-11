@@ -1,28 +1,28 @@
 package com.example.Service.impl;
 
+import cn.hutool.core.lang.Dict;
 import com.example.Mapper.UserMapper;
 import com.example.Service.UserService;
+import com.example.WeBaseUtil.Chain;
 import com.example.vo.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author vir
  * @date 2024/5/13 上午9:36 09 36
  * @package_name com.example.Service.impl
  */
-
+@RequiredArgsConstructor
 @Service
 public class UserServiceimpl implements UserService {
-    @Resource
-    private UserMapper userMapper;
 
-    @Autowired
-    public  UserServiceimpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
+    final UserMapper userMapper;
+
 
     @Override
     public User login(User user) {
@@ -31,8 +31,21 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public boolean register(User user) {
-        boolean existingUser = userMapper.register(user);
-       return  !existingUser;
+        // 对密码进行哈希操作
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPasswd());
+        user.setPasswd(hashedPassword);
+        System.out.println(hashedPassword);
+
+        // 调用 addUser 方法
+        Dict addUserResult = Chain.addUser(user);
+
+            boolean existingUser = userMapper.register(user);
+            return !existingUser;
+
+
+
 
     }
 
@@ -44,5 +57,11 @@ public class UserServiceimpl implements UserService {
     @Override
     public int delUserInfo(User user) {
         return userMapper.delUserInfo(user);
+    }
+    private boolean isValidEmail(String email) {
+        String regex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

@@ -3,21 +3,18 @@ package com.example.Service.impl;
 import com.example.Mapper.FlightMapper;
 import com.example.Service.FlightService;
 import com.example.vo.Flight;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
-import java.util.Objects;
 
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class FlightServiceimpl implements FlightService {
-@Resource
-private FlightMapper flightMapper;
+
+final FlightMapper flightMapper;
     @Override
     public List<Flight> selectFlightList() {
         return flightMapper.selectFlightList();
