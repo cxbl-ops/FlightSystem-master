@@ -3,12 +3,10 @@ package com.example.vo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -32,10 +30,4 @@ public class User {
     @NotNull
     @Length(min = 6,message = "密码必须是6位")
     private String passwd;
-
-    public void Login(String username,String account, String passwd){
-        this.username=username;
-        this.account=account;
-        this.passwd = passwd;
-    }
 }

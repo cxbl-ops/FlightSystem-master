@@ -31,7 +31,7 @@ public class UserController {
         // 从数据库中获取用户信息
         if (username == null && password == null) {
             // 用户不存在
-            return new ResponseResult<>(400, "用户名或密码不正确");
+            return new ResponseResult<>(400, "用户名或密码不能为空");
         }
 
         // 获取数据库中存储的哈希密码
@@ -43,12 +43,9 @@ public class UserController {
             System.out.println("password：" + password);
             System.out.println("hashedPassword：" + hashedPassword);
 
-
-
-            return new ResponseResult<>(400, "用户名或密码错误");
-        } else {
-            
             return new ResponseResult<>(200, "登录成功");
+        } else {
+            return new ResponseResult<>(400, "用户名或密码错误");
         }
     }
 

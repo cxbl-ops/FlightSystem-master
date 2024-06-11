@@ -31,17 +31,25 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public boolean register(User user) {
-        // 对密码进行哈希操作
 
+        // 对密码进行哈希操作
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String hashedPassword = encoder.encode(user.getPasswd());
         user.setPasswd(hashedPassword);
+        boolean existingUser = userMapper.register(user);
         System.out.println(hashedPassword);
 
-        // 调用 addUser 方法
-        Dict addUserResult = Chain.addUser(user);
+        if(user.getUsername().isEmpty()){
+            return false;
+        }else {
+            Dict addUserResult = Chain.addUser(user);
+            System.out.println(addUserResult+"");
+        }
 
-            boolean existingUser = userMapper.register(user);
+        // 调用 addUser 方法
+
+
+
             return !existingUser;
 
 
