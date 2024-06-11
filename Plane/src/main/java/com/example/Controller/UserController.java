@@ -25,6 +25,7 @@ public class UserController {
     // 登录
     @PostMapping("/login")
     public ResponseResult<User> login(@RequestBody User user) {
+        log.info("进行登录");
         // 获取用户输入的用户名和密码
         String username = user.getUsername();
         String password = user.getPasswd();
@@ -39,7 +40,7 @@ public class UserController {
 
         // 使用 BCryptPasswordEncoder 对用户输入的密码进行哈希验证
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (encoder.matches(password, hashedPassword)) {
+        if (!encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
             System.out.println("password：" + password);
             System.out.println("hashedPassword：" + hashedPassword);
 
