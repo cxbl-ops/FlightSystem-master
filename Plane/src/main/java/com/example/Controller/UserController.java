@@ -5,7 +5,6 @@ import com.example.vo.ResponseResult;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,7 @@ import javax.validation.Valid;
 public class UserController {
 
     final UserService userService;
-    private final RedisTemplate redisTemplate;
+
 
 
     // 登录
