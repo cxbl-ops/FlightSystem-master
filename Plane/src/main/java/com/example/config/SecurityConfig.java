@@ -22,8 +22,7 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
                 .and()
                 .httpBasic();
-
-        http.csrf().disable();
+                http.csrf().disable();
 
         return http.build();
     }

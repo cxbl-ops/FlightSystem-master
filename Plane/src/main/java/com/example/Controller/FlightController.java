@@ -6,16 +6,16 @@ import com.example.Service.FlightService;
 import com.example.WeBaseUtil.api;
 import com.example.vo.Flight;
 import com.example.vo.ResponseResult;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class FlightController {
-    @Resource
-    private  FlightService flightService;
+
+    final   FlightService flightService;
     //todo 查询航班信息
     @GetMapping("/selectFlight")
     public ResponseResult selectFlight() {
