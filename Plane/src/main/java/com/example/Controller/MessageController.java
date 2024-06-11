@@ -1,15 +1,14 @@
 package com.example.Controller;
 
 import cn.hutool.core.util.RandomUtil;
-import com.example.vo.ResponseResult;
+import com.example.Service.MessageService;
 import com.example.vo.Code;
 import com.example.vo.EmailMessage;
-import com.example.Service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.vo.ResponseResult;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import com.example.vo.Code;
+
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
@@ -34,15 +33,14 @@ public class MessageController {
         //从Redis中获取code
         String RandomMath = redisTemplate.opsForValue().get(getPeople);
         System.out.println("redis根据输入的邮箱查询库中是否存在验证码，返回值:" + RandomMath);
-        if (!StringUtils.isEmpty(RandomMath)) {  //验证码还未过期，在库中，可以直接登录
+        if (!StringUtils.hasText(RandomMath)) {  //验证码还未过期，在库中，可以直接登录
             return new ResponseResult(Code.EMAIL_SEND_NONO,"验证码还未过期，请输入",  RandomMath);
         }
-
         //验证码过期或者第一次登录生成验证码
         RandomMath = RandomUtil.randomNumbers(6);
         System.out.println("随机验证码为" + RandomMath);
         // 构建一个邮件对象
-        Boolean mail = messageService.sendMail(RandomMath, getPeople);
+        boolean mail = messageService.sendMail(RandomMath, getPeople);
         if (mail) {
             //设置有效时间,这里是30秒，
             redisTemplate.opsForValue().set(getPeople, RandomMath, 60, TimeUnit.SECONDS);

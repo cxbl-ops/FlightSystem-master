@@ -3,18 +3,30 @@
     <el-card class="box-card">
         <h2>登录</h2>
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-position="left" label-width="100px" @keydown.enter.native="submitForm()" class="login-from">
+
             <el-form-item label="用户名" prop="username">
-                <el-input v-model="ruleForm.username"></el-input>
+
+                <el-input id="username" v-model="ruleForm.username"></el-input>
+
             </el-form-item>
+
+
           <el-form-item label="账户地址" prop="account">
-            <el-input v-model="ruleForm.account"></el-input>
+
+            <el-input id="account" v-model="ruleForm.account"></el-input>
+
           </el-form-item>
+
+
             <el-form-item label="密码" prop="passwd">
-                <el-input type="password" v-model="ruleForm.passwd" autocomplete="off"></el-input>
+
+                <el-input id="passwd" v-model="ruleForm.passwd" autocomplete="off" type="password"></el-input>
+
             </el-form-item>
+
         </el-form>
         <div class="btnGroup">
-            <el-button type="primary" @click="submitForm()" size="medium" round>登录</el-button>
+            <el-button id="submit" round size="medium" type="primary" @click="submitForm()">登录</el-button>
             <el-button @click="resetForm()" size="medium" round>重置</el-button>
             <div class="link"></div>
         </div>
@@ -24,9 +36,8 @@
 </template>
 
 <script>
-import {
-    login
-} from "@/api/home";
+import {login} from "@/api/home";
+
 export default {
     data() {
         return {
@@ -108,12 +119,7 @@ export default {
 </script>
 
 <style scoped>
-.el-card {
-    width: 500px;
-    height: 300px;
-    margin: 0 auto;
-    text-align: center;
-}
+
 
 .link {
     width: 100%;

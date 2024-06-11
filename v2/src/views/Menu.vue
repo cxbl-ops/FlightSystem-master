@@ -17,9 +17,9 @@ export default {
   methods: {
     handleSelect(index) {
       if (index === '1-1') {
-        this.$router.push('FlightInfo');
+        this.$router.push('/index/FlightInfo');
       } else if (index === '1-2') {
-        this.$router.push('UserInfo');
+        this.$router.push('/index/UserInfo');
       }
     }
   }

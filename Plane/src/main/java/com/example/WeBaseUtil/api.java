@@ -7,7 +7,6 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 
-
 import java.util.List;
 
 
@@ -22,7 +21,7 @@ public class api {
         JSONArray abiJSON = JSONUtil.parseArray(contractAbi);
         JSONObject data = JSONUtil.createObj();
         data.set("groupId", "1");
-        data.set("user", "0x0e39f01db4d9a08f825a4bf53800881ae0c5d329");
+        data.set("user", "0x757ac08971d303a9129bb6c9128c00c85eb3947c");
         data.set("contractName", contractName);
         data.set("version", "1.0");
         data.set("funcName", funcName);

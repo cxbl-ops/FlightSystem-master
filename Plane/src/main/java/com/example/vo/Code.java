@@ -8,4 +8,5 @@ public class Code {
     public static final Integer EMAIL_SEND_ERR=666;
     public static final Integer EMAIL_LOGIN_OK=200;
     public static final Integer EMAIL_LOGIN_ERR=444;
+
 }
