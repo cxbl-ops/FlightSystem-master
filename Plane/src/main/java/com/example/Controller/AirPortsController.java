@@ -4,16 +4,15 @@ import com.example.Service.AirPortsService;
 import com.example.vo.Air;
 import com.example.vo.City;
 import com.example.vo.ResponseResult;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
-
+@RequiredArgsConstructor
 @RestController
 public class AirPortsController {
-    @Resource
-    private AirPortsService airPortsService;
+
+    final AirPortsService airPortsService;
 
     //查询国家
     @GetMapping("/selectCountry")

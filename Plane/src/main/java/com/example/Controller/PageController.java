@@ -2,22 +2,21 @@ package com.example.Controller;
 
 import com.example.Mapper.PageMapper;
 import com.example.Service.PageService;
-
 import com.example.vo.ResponseResult;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
-
+@RequiredArgsConstructor
 @RestController
 public class PageController {
-    @Resource
-    private PageService pageService;
-    @Autowired
-    private PageMapper pageMapper;
+
+    final PageService pageService;
+
+    final PageMapper pageMapper;
     @GetMapping("/queryPageByFlight")
     public  ResponseResult queryPageByFlight(@RequestParam(defaultValue = "1") Integer currPage,@RequestParam(defaultValue = "10") Integer pageSize){
 

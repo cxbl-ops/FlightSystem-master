@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +22,8 @@ public class MessageServiceimpl implements MessageService {
     @Value("${spring.mail.username}")
     String setPeople;
 
+
+    @Async
     public boolean sendMail(String code, String getPeople) {
         SimpleMailMessage message = new SimpleMailMessage();
         // 设置邮件发送者

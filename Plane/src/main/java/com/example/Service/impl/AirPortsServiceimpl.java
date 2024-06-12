@@ -1,20 +1,20 @@
 package com.example.Service.impl;
 
 import com.example.Mapper.AirPortsMapper;
+import com.example.Service.AirPortsService;
 import com.example.vo.Air;
 import com.example.vo.City;
 import com.example.vo.Country;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.Service.AirPortsService;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 @Service
 public class AirPortsServiceimpl implements AirPortsService {
 
-    @Autowired
-    private AirPortsMapper airPortsMapper;
+
+    final AirPortsMapper airPortsMapper;
 
     @Override
     public List<Country> selectCountry( ) {
