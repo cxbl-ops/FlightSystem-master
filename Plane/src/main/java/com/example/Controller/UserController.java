@@ -43,7 +43,7 @@ public class UserController {
 
         // 使用 BCryptPasswordEncoder 对用户输入的密码进行哈希验证
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (!encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
+        if (encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
             System.out.println("password：" + password);
             System.out.println("hashedPassword：" + hashedPassword);
 

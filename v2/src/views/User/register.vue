@@ -132,7 +132,7 @@ export default {
                             errorMessage(res.code, res.msg);
                         }
                     });
-                    
+
                 } else {
                     return false;
                 }
@@ -148,10 +148,8 @@ export default {
         },
         handleSendEmail() {
             this.$refs.ruleForm.validate((valid) => {
-
                 if (valid) {
                     sendEmail(this.ruleForm.username)
-
                     .then( (res) => {
                       console.log("res"+res)
                         if (res.code === 555) {
@@ -160,10 +158,7 @@ export default {
                                         message:"验证码发送成功,60秒后过期，请尽快填写",
                                         showClose:false,
                                     })
-                                    
-                                 
                                     // this.$router.push("/login");
-                                    
                                 } else {
                                     this.$notify.error({
                                        title:"Failed to send verification code",
@@ -171,7 +166,6 @@ export default {
                                         showClose:false
                                     });
                                 }
-
                     });
                 }
             });
