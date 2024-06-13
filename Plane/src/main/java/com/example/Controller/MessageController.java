@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:8080")
 public class MessageController {
 
 
@@ -33,7 +32,7 @@ public class MessageController {
         //从Redis中获取code
         String RandomMath = redisTemplate.opsForValue().get(getPeople);
         System.out.println("redis根据输入的邮箱查询库中是否存在验证码，返回值:" + RandomMath);
-        if (!StringUtils.hasText(RandomMath)) {  //验证码还未过期，在库中，可以直接登录
+        if (StringUtils.hasText(RandomMath)) {  //验证码还未过期，在库中，可以直接登录
             return new ResponseResult(Code.EMAIL_SEND_NONO,"验证码还未过期，请输入",  RandomMath);
         }
         //验证码过期或者第一次登录生成验证码

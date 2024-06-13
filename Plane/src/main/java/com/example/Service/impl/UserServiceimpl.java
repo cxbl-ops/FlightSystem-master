@@ -3,7 +3,7 @@ package com.example.Service.impl;
 import cn.hutool.core.lang.Dict;
 import com.example.Mapper.UserMapper;
 import com.example.Service.UserService;
-import com.example.WeBaseUtil.Chain;
+//import com.example.WeBaseUtil.Chain;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,29 +31,8 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public boolean register(User user) {
-
-        // 对密码进行哈希操作
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(user.getPasswd());
-        user.setPasswd(hashedPassword);
         boolean existingUser = userMapper.register(user);
-        System.out.println(hashedPassword);
-
-        if(user.getUsername().isEmpty()){
-            return false;
-        }else {
-            Dict addUserResult = Chain.addUser(user);
-            System.out.println(addUserResult+"");
-        }
-
-        // 调用 addUser 方法
-
-
-
-            return !existingUser;
-
-
-
+        return !existingUser;
 
     }
 
@@ -66,10 +45,5 @@ public class UserServiceimpl implements UserService {
     public int delUserInfo(User user) {
         return userMapper.delUserInfo(user);
     }
-    private boolean isValidEmail(String email) {
-        String regex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
+
 }

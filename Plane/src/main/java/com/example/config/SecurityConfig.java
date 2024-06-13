@@ -15,7 +15,6 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -23,7 +22,6 @@ public class SecurityConfig {
                 .and()
                 .httpBasic();
                 http.csrf().disable();
-
         return http.build();
     }
 

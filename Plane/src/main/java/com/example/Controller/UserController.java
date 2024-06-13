@@ -1,6 +1,9 @@
 package com.example.Controller;
 
+import cn.hutool.core.lang.Dict;
+import cn.hutool.json.JSONArray;
 import com.example.Service.UserService;
+import com.example.WeBaseUtil.api;
 import com.example.vo.ResponseResult;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -19,7 +23,6 @@ import javax.validation.Valid;
 public class UserController {
 
     final UserService userService;
-
 
 
     // 登录
@@ -50,33 +53,49 @@ public class UserController {
         }
     }
 
-// 注册
+    // 注册
     @PostMapping("/register")
     public ResponseResult<User> register(@RequestBody @Valid User user) {
-        boolean success = userService.register(user);
-        if (success) {
-            return new ResponseResult<>(200, "注册成功");
-        }
-        return new ResponseResult<>(400, "注册失败用户已有");
+        // 对密码进行哈希操作
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(user.getPasswd());
+        user.setPasswd(hashedPassword);
+        JSONArray _UserInfo = new JSONArray();
+        _UserInfo.put(user.getUsername());
+        _UserInfo.put(user.getAccount());
+        _UserInfo.put(user.getPasswd());
+
+        Dict result = api.LocalSign("user",
+                "0x94034436684b7e0c643dff6a34ac3fe843c3a8bc",
+                "adduser",
+                _UserInfo,
+                "[{\"constant\":false,\"inputs\":[{\"name\":\"_userName\",\"type\":\"string\"},{\"name\":\"_account\",\"type\":\"address\"},{\"name\":\"_passwd\",\"type\":\"string\"}],\"name\":\"adduser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_id\",\"type\":\"int256\"}],\"name\":\"getuser\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"name\":\"users\",\"outputs\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"userName\",\"type\":\"string\"},{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"passwd\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]");
+
+
+        return new ResponseResult<>(200, "注册成功");
     }
+//        return new ResponseResult<>(400,"注册失败用户已有");
 
 
-
-
-
-    @PostMapping("/updateUserInfo")
-    public ResponseResult<User> updateUserInfo(@RequestBody User user) {
-        if (userService.updateUserInfo(user) == 0) {
-            return new ResponseResult<>(400, "更新失败");
-        }
-            return new ResponseResult<>(200, "更新成功");
-        }
-        @PostMapping("/delUserInfo")
-    public ResponseResult<User> delUserInfo(@RequestBody User user) {
-        if (userService.delUserInfo(user) == 0) {
-            return new ResponseResult<>(400, "删除失败");
-        }
-        return new ResponseResult<>(200, "删除成功");
+@PostMapping("/updateUserInfo")
+public ResponseResult<User> updateUserInfo(@RequestBody User user) {
+    if (userService.updateUserInfo(user) == 0) {
+        return new ResponseResult<>(400, "更新失败");
     }
+    return new ResponseResult<>(200, "更新成功");
+}
 
+@PostMapping("/delUserInfo")
+public ResponseResult<User> delUserInfo(@RequestBody User user) {
+    if (userService.delUserInfo(user) == 0) {
+        return new ResponseResult<>(400, "删除失败");
+    }
+    return new ResponseResult<>(200, "删除成功");
+}
+    private boolean isValidEmail(String email) {
+        String regex = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 }
