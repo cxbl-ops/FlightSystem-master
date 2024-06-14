@@ -36,7 +36,7 @@ export function sendEmail(data) {
 export function registerE(data) {
   return request({
     method: "post",
-    url: "/dev-api/registerE",
+    url: "/dev-api/register",
     data,
   });
 }
@@ -59,5 +59,5 @@ export function search(flightId) {
       method: "get",
       url: "/dev-api/search/"+flightId,
     });
-  
+
 }
