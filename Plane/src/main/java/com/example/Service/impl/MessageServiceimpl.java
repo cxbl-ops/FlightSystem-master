@@ -23,7 +23,7 @@ public class MessageServiceimpl implements MessageService {
     String setPeople;
 
 
-    @Async
+
     public boolean sendMail(String code, String getPeople) {
         SimpleMailMessage message = new SimpleMailMessage();
         // 设置邮件发送者
