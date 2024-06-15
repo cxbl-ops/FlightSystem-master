@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
  */
 @RequiredArgsConstructor
 @Service
+
 public class UserServiceimpl implements UserService {
 
     final UserMapper userMapper;
@@ -30,9 +31,8 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
-    public boolean register(User user) {
-        boolean existingUser = userMapper.register(user);
-        return !existingUser;
+    public User register(User user) {
+      return userMapper.register(user);
 
     }
 
@@ -45,5 +45,7 @@ public class UserServiceimpl implements UserService {
     public int delUserInfo(User user) {
         return userMapper.delUserInfo(user);
     }
+
+
 
 }

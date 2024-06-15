@@ -2,7 +2,7 @@
   <el-aside class="aside" width="200px">
     <el-menu :default-openeds="['1', '3']" @select="handleSelect">
       <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>主页</template>
+        <template v-slot:title><i class="el-icon-message"></i>主页</template>
         <el-menu-item-group>
           <el-menu-item index="1-1">航班信息</el-menu-item>
           <el-menu-item index="1-2">用户管理</el-menu-item>

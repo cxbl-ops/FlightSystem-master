@@ -1,4 +1,5 @@
 import request from "@/util/request.js"
+
 export function queryPageByFlight(data) {
     const currPage = data.currentPage
     const pageSize = data.pageSize

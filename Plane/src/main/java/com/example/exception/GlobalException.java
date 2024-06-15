@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
  * @date 29/5/2024 下午5:25 17 25
  * @package_name com.example.exception
  */
-@EqualsAndHashCode(callSuper = true)
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -26,7 +26,7 @@
 
         </el-form>
         <div class="btnGroup">
-            <el-button id="submit" round size="medium" type="primary" @click="submitForm()">登录</el-button>
+            <el-button id="submit" round size="medium" type="primary" @click="loginForm()">登录</el-button>
             <el-button @click="resetForm()" size="medium" round>重置</el-button>
             <div class="link"></div>
         </div>
@@ -36,84 +36,14 @@
 </template>
 
 <script>
-import {login} from "@/api/home";
-
+import {loginForm, resetForm,handleRegister} from "@/services/UserMethods/LoginMethods";
+import LoginMixins from '@/mixins/UserMixins/LoginMixins';
 export default {
-    data() {
-        return {
-            ruleForm: {
-              username: "",
-              account:"",
-              passwd: "",
-            },
-            rules: {
-              username: [{
-                    required: true,
-                    message: "用户名不能为空！",
-                    trigger: "blur"
-                }],
-              account:[{
-                required:true,
-                message:"请输入账户地址",
-                trigger:"blur"
-              },
-                {
-                pattern: /^0x[a-fA-F0-9]{40}$/,
-                message: "密码必须以 '0x' 开头，且长度必须为 42 位！",
-                trigger: "blur"
-              }
-              ],
-              passwd: [{
-                    required: true,
-                    message: "密码不能为空！",
-                    trigger: "blur"
-                },],
-            },
-        };
-    },
+   mixins:[LoginMixins],
     methods: {
-        submitForm() {
-            this.$refs.ruleForm.validate((valid) => {
-                if (valid) {
-                    login(this.ruleForm.username,this.ruleForm.account, this.ruleForm.passwd)
-
-                    .then((res) => {
-                            if (res.code === 200) {
-                                this.$notify.success({
-                                title:"Successfully Login",
-                                message: "登录成功",
-                                showClose: false,
-                            });
-                                this.$router.push("/index");
-                            } else {
-                                this.$notify.error({
-                                    title:"Login Failed",
-                                    message: "登陆失败",
-                                    showClose: false,
-                                });
-                            }
-
-                        })
-                        .catch(res => {
-                            this.$notify.warning({
-                                title:"System Exception",
-                                message: "系统异常",
-                                showClose: false,
-                            })
-                        });
-                } else {
-                    return false;
-                }
-
-            });
-
-        },
-        resetForm() {
-            this.$refs.ruleForm.resetFields();
-        },
-        handleRegister() {
-            this.$router.push("/register");
-        },
+      loginForm,
+        resetForm,
+        handleRegister,
     },
 };
 </script>

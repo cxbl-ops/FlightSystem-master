@@ -30,54 +30,47 @@ public class UserController {
     public ResponseResult<User> login(@RequestBody User user) {
         log.info("进行登录");
         // 获取用户输入的用户名和密码
-        String username = user.getUsername();
-        String password = user.getPasswd();
-        // 从数据库中获取用户信息
-        if (username == null && password == null) {
-            // 用户不存在
-            return new ResponseResult<>(400, "用户名或密码不能为空");
-        }
+//        String username = user.getUsername();
+//        String password = user.getPasswd();
+//        // 从数据库中获取用户信息
+//        if (username == null && password == null) {
+//            // 用户不存在
+//            return new ResponseResult<>(400, "用户名或密码不能为空");
+//        }
+//
+//        // 获取数据库中存储的哈希密码
+//        String hashedPassword = user.getPasswd();
+//
+//        // 使用 BCryptPasswordEncoder 对用户输入的密码进行哈希验证
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        if (encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
+//            System.out.println("password：" + password);
+//            System.out.println("hashedPassword：" + hashedPassword);
 
-        // 获取数据库中存储的哈希密码
-        String hashedPassword = user.getPasswd();
-
-        // 使用 BCryptPasswordEncoder 对用户输入的密码进行哈希验证
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        if (encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
-            System.out.println("password：" + password);
-            System.out.println("hashedPassword：" + hashedPassword);
-
-            return new ResponseResult<>(200, "登录成功");
-        } else {
-            return new ResponseResult<>(400, "用户名或密码错误");
-        }
+//            return new ResponseResult<>(200, "登录成功");
+//        } else {
+//            return new ResponseResult<>(400, "用户名或密码错误");
+//        }
+        userService.login(user);
+        return new ResponseResult<>(200, "登录成功");
     }
 
     // 注册
     @PostMapping("/register")
     public ResponseResult<User> register(@RequestBody @Valid User user) {
+        log.info("进行注册");
         // 对密码进行哈希操作
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(user.getPasswd());
-        user.setPasswd(hashedPassword);
-        JSONArray _UserInfo = new JSONArray();
-        _UserInfo.put(user.getUsername());
-        _UserInfo.put(user.getAccount());
-        _UserInfo.put(user.getPasswd());
 
-        Dict result = api.LocalSign("user",
-                "0x94034436684b7e0c643dff6a34ac3fe843c3a8bc",
-                "adduser",
-                _UserInfo,
-                "[{\"constant\":false,\"inputs\":[{\"name\":\"_userName\",\"type\":\"string\"},{\"name\":\"_account\",\"type\":\"address\"},{\"name\":\"_passwd\",\"type\":\"string\"}],\"name\":\"adduser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_id\",\"type\":\"int256\"}],\"name\":\"getuser\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"},{\"name\":\"\",\"type\":\"string\"},{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"name\":\"users\",\"outputs\":[{\"name\":\"id\",\"type\":\"int256\"},{\"name\":\"userName\",\"type\":\"string\"},{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"passwd\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}]");
-
-
+    log.info("用户信息：{}", user);
+        // 保存用户到数据库或者其他数据存储中
+        userService.register(user);
         return new ResponseResult<>(200, "注册成功");
     }
-//        return new ResponseResult<>(400,"注册失败用户已有");
 
 
-@PostMapping("/updateUserInfo")
+
+
+    @PostMapping("/updateUserInfo")
 public ResponseResult<User> updateUserInfo(@RequestBody User user) {
     if (userService.updateUserInfo(user) == 0) {
         return new ResponseResult<>(400, "更新失败");
