@@ -69,7 +69,6 @@ public class UserController {
 
 
 
-
     @PostMapping("/updateUserInfo")
 public ResponseResult<User> updateUserInfo(@RequestBody User user) {
     if (userService.updateUserInfo(user) == 0) {

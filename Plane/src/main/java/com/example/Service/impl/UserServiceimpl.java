@@ -1,16 +1,11 @@
 package com.example.Service.impl;
 
-import cn.hutool.core.lang.Dict;
 import com.example.Mapper.UserMapper;
 import com.example.Service.UserService;
 //import com.example.WeBaseUtil.Chain;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author vir
@@ -31,7 +26,7 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
-    public User register(User user) {
+    public int register(User user) {
       return userMapper.register(user);
 
     }

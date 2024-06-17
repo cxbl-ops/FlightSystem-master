@@ -9,7 +9,7 @@ import com.example.vo.User;
  */
 public interface UserService {
    User login(User user);
-   User register(User user);
+   int register(User user);
    int updateUserInfo(User user);
    int delUserInfo(User user);
 
