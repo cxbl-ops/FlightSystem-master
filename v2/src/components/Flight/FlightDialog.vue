@@ -53,8 +53,12 @@
 </template>
 
 <script>
+import FlightMixins from "@/mixins/FlightMixins";
 export default {
   name: 'FlightDialog',
+
+// mixins:[FlightMixins],
+
   props: {
     visible: {
       type: Boolean,
@@ -75,21 +79,36 @@ export default {
   },
   computed: {
     departureArr: {
-      get() {
-        return this.edit.departure ? this.edit.departure.split("-") : [];
+      get: function () {
+        return this.edit.departure.split("-");
       },
-      set(arr) {
-        this.edit.departure = arr.join("-");
-      }
+      set: function (arr) {
+        let str = "";
+        for (let i = 0; i < arr.length; i++) {
+          str += arr[i];
+          if (i !== arr.length - 1) {
+            str += "-";
+          }
+        }
+        this.edit.departure = str;
+      },
     },
     destinationArr: {
-      get() {
-        return this.edit.destination ? this.edit.destination.split("-") : [];
+      get: function () {
+        return this.edit.destination.split("-");
       },
-      set(arr) {
-        this.edit.destination = arr.join("-");
-      }
-    }
+      set: function (arr) {
+        let str = "";
+        for (let i = 0; i < arr.length; i++) {
+          str += arr[i];
+          if (i !== arr.length - 1) {
+            str += "-";
+          }
+        }
+        this.edit.destination = str;
+        console.log(this.edit);
+      },
+    },
   },
   methods: {
     saveFlightEdit() {

@@ -12,6 +12,9 @@ export function registerForm() {
             const data = {
                 email: this.ruleForm.username,
                 math: this.ruleForm.emailMessage,
+                username: this.ruleForm.username,
+                account: this.ruleForm.account,
+                passwd: this.ruleForm.passwd,
             };
             registerE(data).then((res) => {
                 if (res.code === 200) {

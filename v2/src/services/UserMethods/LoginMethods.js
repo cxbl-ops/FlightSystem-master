@@ -1,5 +1,6 @@
 import  {login} from "@/api/User";
 export function loginForm(){
+    console.log(this.ruleForm)
     this.$refs.ruleForm.validate((valid) => {
         if (valid) {
             login(this.ruleForm.username,this.ruleForm.account, this.ruleForm.passwd)

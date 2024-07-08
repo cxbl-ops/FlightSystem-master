@@ -22,7 +22,7 @@ VOLUME /tmp
 ADD target/Plane-0.0.1-SNAPSHOT.jar app.jar
 
 #暴露8080端口；5005为远程调试端口，根据需要选择是否暴露
-EXPOSE 8080 5005
+EXPOSE 9006 5005
 
 #启动容器时的进程
 #ENTRYPOINT ["java","-jar","/app.jar"]

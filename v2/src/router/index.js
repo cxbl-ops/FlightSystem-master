@@ -31,7 +31,7 @@ const routes = [
       },
       {
 
-        path: "userInfo",
+        path: "UserInfo",
         component: UserInfo
       }
     ],

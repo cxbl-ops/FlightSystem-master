@@ -38,7 +38,7 @@ public class MessageController {
         if (StringUtils.hasText(RandomMath)) {  //验证码还未过期，在库中，可以直接登录 这里为什么要加一个！导致直接逻辑短路
             log.info("应当结束");
             return new ResponseResult(Code.EMAIL_SEND_NONO, "验证码还未过期，请输入", RandomMath);
-        } else if (RandomMath ==null || RandomMath ==""){
+        } else if (RandomMath ==null || RandomMath.isEmpty()){
             //验证码过期或者第一次登录生成验证码
             RandomMath = RandomUtil.randomNumbers(6);
             System.out.println("随机验证码为" + RandomMath);

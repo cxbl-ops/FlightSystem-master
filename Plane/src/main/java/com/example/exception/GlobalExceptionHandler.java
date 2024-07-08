@@ -4,11 +4,15 @@ import com.example.vo.RespBean;
 import com.example.vo.RespBeanEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -22,7 +26,7 @@ public class GlobalExceptionHandler {
     //调试日志
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @ExceptionHandler(Exception.class)//处理哪些异常
+    @ExceptionHandler({Exception.class})//处理哪些异常
     public RespBean ExceptionHandler(Exception e,HttpServletRequest request){
         //打印日志
         logger.error("Request URL : {}，Exception : {}", request.getRequestURL(), e.getMessage(),e);
@@ -39,4 +43,13 @@ public class GlobalExceptionHandler {
         return RespBean.error(RespBeanEnum.ERROR);
 
     }
+    //日志异常
+    @ExceptionHandler(NoLogException.class)
+    public RespBean handleNoLogException(NoLogException e) {
+        return RespBean.error(e.getRespBeanEnum());
+    }
+
+
+
+
 }

@@ -1,19 +1,14 @@
 package com.example.Controller;
 
-import cn.hutool.core.lang.Dict;
-import cn.hutool.json.JSONArray;
 import com.example.Service.UserService;
-import com.example.WeBaseUtil.api;
 import com.example.vo.ResponseResult;
 import com.example.vo.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,47 +24,41 @@ public class UserController {
     @PostMapping("/login")
     public ResponseResult<User> login(@RequestBody User user) {
         log.info("进行登录");
-        // 获取用户输入的用户名和密码
-//        String username = user.getUsername();
-//        String password = user.getPasswd();
-//        // 从数据库中获取用户信息
-//        if (username == null && password == null) {
-//            // 用户不存在
-//            return new ResponseResult<>(400, "用户名或密码不能为空");
-//        }
-//
-//        // 获取数据库中存储的哈希密码
-//        String hashedPassword = user.getPasswd();
-//
-//        // 使用 BCryptPasswordEncoder 对用户输入的密码进行哈希验证
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        if (encoder.matches(password, hashedPassword)) { //我其实也不知道为什么但是取反就完了
-//            System.out.println("password：" + password);
-//            System.out.println("hashedPassword：" + hashedPassword);
-
-//            return new ResponseResult<>(200, "登录成功");
-//        } else {
-//            return new ResponseResult<>(400, "用户名或密码错误");
-//        }
-        userService.login(user);
-        return new ResponseResult<>(200, "登录成功");
+        System.out.println(user);
+        try {
+            userService.selectUserInfo(user);
+            // 登录成功
+            return new ResponseResult(200, "登录成功");
+        } catch (IllegalArgumentException e) {
+            System.out.println("e:"+e);
+            // 用户名不存在或密码错误
+            return new ResponseResult(400, "用户名不存在或密码错误");
+        } catch (Exception e) {
+            // 其他异常情况
+            return new ResponseResult(500, "登录失败");
+        }
     }
 
     // 注册
     @PostMapping("/register")
-    public ResponseResult<User> register(@RequestBody @Valid User user) {
-        log.info("进行注册");
-        // 对密码进行哈希操作
+    public ResponseResult register( @RequestBody  User user) {
+        int resultCode = userService.addUserInfo(user);
+        log.info("user:{}",user);
+        switch (resultCode) {
+            case 200:
+                return new ResponseResult<>(200, "注册成功");
+            case 400:
+                return new ResponseResult<>(400, "用户名或账号已存在");
+            default:
+                return new ResponseResult<>(400, "注册失败");
+        }
 
-    log.info("用户信息：{}", user);
-        // 保存用户到数据库或者其他数据存储中
-        userService.register(user);
-        return new ResponseResult<>(200, "注册成功");
     }
 
 
 
-    @PostMapping("/updateUserInfo")
+
+        @PostMapping("/updateUserInfo")
 public ResponseResult<User> updateUserInfo(@RequestBody User user) {
     if (userService.updateUserInfo(user) == 0) {
         return new ResponseResult<>(400, "更新失败");

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b24fb432-bc90-4098-8f90-8e169e1ec601" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/until/HashUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FlightSystem-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlightSystem-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/forwardedPorts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/Mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/Mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/Service/impl/UserServiceimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/Service/impl/UserServiceimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/WeBaseUtil/Chain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/WeBaseUtil/Chain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/java/com/example/vo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/java/com/example/vo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plane/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Plane/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/api/Flight.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/api/Flight.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/components/Flight/FlightDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/components/Flight/FlightDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/components/Flight/FlightTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/components/Flight/FlightTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/mixins/FlightMixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/mixins/FlightMixins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/services/FlightMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/services/FlightMethods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/services/UserMethods/LoginMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/services/UserMethods/LoginMethods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/services/UserMethods/RegisterMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/services/UserMethods/RegisterMethod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/views/Flight/FlightInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/views/Flight/FlightInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/src/views/User/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/v2/src/views/User/UserInfo.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;cxbl-ops&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/cxbl-ops/FlightSystem-master.git&quot;,
+    &quot;accountId&quot;: &quot;e4f7f384-42c2-45a3-8c0b-7bb6bd762b80&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\devTools\apache-maven-3.9.7" />
+        <option name="localRepository" value="D:\devTools\apache-maven-3.9.7\repo" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="D:\devTools\apache-maven-3.9.7\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2irV8hmaSs8xLLsWi0Ft78iY6ue" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Plane [clean].executor": "Run",
+    "Maven.Plane [compile].executor": "Run",
+    "Maven.Plane [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.PlaneApplication.executor": "Run",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/devTools/WorkSpace/FlightSystem-master/Plane",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.serve.executor": "Run",
+    "project.structure.last.edited": "全局库",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "ts.external.directory.path": "D:\\devTools\\IntelliJ IDEA 2024.1.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.PlaneApplication.executor": "Run"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="PlaneApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Plane" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PlaneApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="b24fb432-bc90-4098-8f90-8e169e1ec601" name="更改" comment="" />
+      <created>1720248526518</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720248526518</updated>
+      <workItem from="1720248528845" duration="4442000" />
+      <workItem from="1720360855775" duration="40000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
