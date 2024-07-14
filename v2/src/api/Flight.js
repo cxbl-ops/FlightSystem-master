@@ -5,7 +5,7 @@ export function ApideleteFlightById(id) {
   return request({
     method: "post",
     url: "/dev-api/deleteFlightById",
-    data: id,
+    data: {id}
   });
 }
 

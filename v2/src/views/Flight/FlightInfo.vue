@@ -8,6 +8,7 @@
           <el-button @click="handleFocus" icon="el-icon-search" type="primary">查询</el-button>
           <el-button @click="handleAddFlight" type="primary" icon="el-icon-circle-plus-outline">添加航班信息</el-button>
         </div>
+     
         <FlightTable :data="flight" @edit="editFlight" @delete="handleDeleteFlightById"/>
       </div>
     </div>

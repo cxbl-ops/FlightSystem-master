@@ -87,7 +87,7 @@ export  default {
                         console.log(res);
                         if (res.code === 200) {
                             this.dialogFormVisible = false;
-                            this.$notify.success({
+                            this.$message.success({
                                 title: "Successfully Modified",
                                 message: "修改成功",
                                 showClose: false,
@@ -95,7 +95,7 @@ export  default {
                             this.loadData()
                             // this.getList();
                         } else {
-                            this.$notify.warning({
+                            this.$message.warning({
                                 title: "Fail to Edit",
                                 message: "修改失败",
                                 showClose: false,
@@ -103,7 +103,7 @@ export  default {
                         }
                     })
                     .catch((res) => {
-                        this.$notify.error({
+                        this.$message.error({
                             title: "System Exception",
                             message: "修改异常",
                             showClose: false,
@@ -120,7 +120,7 @@ export  default {
                         console.log(res.data);
                         if (res.data === 1) {
                             this.dialogFormVisible = false;
-                            this.$notify.success({
+                            this.$message.success({
                                 title: "Added Successfully",
                                 message: "添加成功",
                                 showClose: false,
@@ -128,7 +128,7 @@ export  default {
                             this.loadData()
                             // this.getList();
                         } else {
-                            this.$notify.warning({
+                            this.$message.warning({
                                 title: "Add Failed",
                                 message: "添加失败",
                                 showClose: false,
@@ -136,7 +136,7 @@ export  default {
                         }
                     })
                     .catch((res) => {
-                        this.$notify.error({
+                        this.$message.error({
                             title: "System Exception",
                             message: "添加异常",
                             showClose: false,
@@ -168,7 +168,7 @@ export  default {
 
                 .then((res) => {
                     if (res.data.code === 200) {
-                        this.$notify.success({
+                        this.$message.success({
                             title: "Successfully Deleted",
                             message: "删除成功",
                             showClose: false,
@@ -176,7 +176,7 @@ export  default {
                         this.loadData()
                         // this.getList();
                     } else {
-                        this.$notify.error({
+                        this.$message.error({
                             title: "Failed to Delete",
                             message: "删除失败",
                             showClose: false,
@@ -184,7 +184,7 @@ export  default {
                     }
                 })
                 .catch((res) => {
-                    this.$notify.error({
+                    this.$message.error({
                         title: "System Exception",
                         message: "删除异常",
                         showClose: false,

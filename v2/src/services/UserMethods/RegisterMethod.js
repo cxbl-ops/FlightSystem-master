@@ -63,13 +63,13 @@ export function handleSendEmail() {
             sendEmail(this.ruleForm.username)
                 .then((res) => {
                     if (res.code === 555) {
-                        this.$notify.success({
+                        this.$message.success({
                             title: "Verification code sent successfully",
                             message: "验证码发送成功, 60秒后过期，请尽快填写",
                             showClose: false,
                         });
                     } else {
-                        this.$notify.error({
+                        this.$message.error({
                             title: "Failed to send verification code",
                             message: "验证码发送失败",
                             showClose: false,
@@ -77,7 +77,7 @@ export function handleSendEmail() {
                     }
                 })
                 .catch(() => {
-                    this.$notify.error({
+                    this.$message.error({
                         title: "System Exception",
                         message: "发送验证码异常，请稍后重试",
                         showClose: false,

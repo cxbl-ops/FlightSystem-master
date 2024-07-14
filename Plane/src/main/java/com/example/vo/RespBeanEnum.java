@@ -21,7 +21,9 @@ public enum RespBeanEnum {
     EMAIL_SEND_ERR(500213,"邮箱发送失败"),
     BIND_ERROR(500214,"参数校验异常" ),
     USER_ALREADY_EXISTS(500215,"用户名已存在"),
-    USER_ACCOUNT_EXISTS(500216,"账户已存在");
+    USER_ACCOUNT_EXISTS(500216,"账户已存在"),
+    USER_LOGIN_FAILED(500217,"登陆失败"),
+    USER_NOT_FOUND(500218,"用户不见了");
 
 
 

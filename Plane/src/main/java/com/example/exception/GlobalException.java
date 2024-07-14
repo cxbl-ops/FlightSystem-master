@@ -3,7 +3,6 @@ package com.example.exception;
 import com.example.vo.RespBeanEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -12,7 +11,7 @@ import lombok.NoArgsConstructor;
  * @package_name com.example.exception
  */
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class GlobalException extends RuntimeException{

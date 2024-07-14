@@ -4,6 +4,7 @@ module.exports = defineConfig({
     proxy: {
       '/dev-api': {
         target: 'http://localhost:9006',
+        // target:'http://47.109.71.124:9007/',
         changeOrigin: true,
         pathRewrite: {
           '^/dev-api': '' // 以apiDev作为前缀

@@ -7,14 +7,14 @@ export function loginForm(){
 
                 .then((res) => {
                     if (res.code === 200) {
-                        this.$notify.success({
+                        this.$message.success({
                             title:"Successfully Login",
                             message: "登录成功",
                             showClose: false,
                         });
                         this.$router.push("/index");
                     } else {
-                        this.$notify.error({
+                        this.$message.error({
                             title:"Login Failed",
                             message: "登陆失败",
                             showClose: false,
@@ -23,7 +23,7 @@ export function loginForm(){
 
                 })
                 .catch(res => {
-                    this.$notify.warning({
+                    this.$message.warning({
                         title:"System Exception",
                         message: "系统异常",
                         showClose: false,

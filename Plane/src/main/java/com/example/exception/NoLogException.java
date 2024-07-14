@@ -1,6 +1,7 @@
 package com.example.exception;
 
 import com.example.vo.RespBeanEnum;
+import lombok.Getter;
 
 /**
  * @author virgo
@@ -8,15 +9,13 @@ import com.example.vo.RespBeanEnum;
  * @package_name com.example.exception
  * @Project_name Plane
  */
+@Getter
 public class NoLogException extends RuntimeException {
-    private RespBeanEnum respBeanEnum;
+    private final RespBeanEnum respBeanEnum;
 
     public NoLogException(RespBeanEnum respBeanEnum) {
         super(respBeanEnum.getMessage());
         this.respBeanEnum = respBeanEnum;
     }
 
-    public RespBeanEnum getRespBeanEnum() {
-        return respBeanEnum;
-    }
 }

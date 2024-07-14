@@ -9,11 +9,18 @@
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
+    <div class="ip" @click="fetchIP">当前ip：{{ ip }}</div>
   </el-aside>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+  data(){
+    return{
+      ip:"未获取"
+    }
+  },
   methods: {
     handleSelect(index) {
       if (index === '1-1') {
@@ -21,7 +28,20 @@ export default {
       } else if (index === '1-2') {
         this.$router.push('/index/UserInfo');
       }
-    }
+
+    },
+    async fetchIP() {
+      try {
+        const response = await axios.get('/dev-api/api/user-info');
+        this.ip = response.data.ipAddress;
+      } catch (error) {
+        console.error('Error fetching IP:', error);
+        this.ip = '获取失败';
+      }
+    },
+  },
+  mounted(){
+    this.fetchIP()
   }
 };
 </script>
@@ -34,5 +54,10 @@ export default {
   left: 0;
   top: 0;
   z-index: 1000;
+}
+.ip{
+  margin-top: 750px;
+  margin-left: 25px;
+
 }
 </style>
