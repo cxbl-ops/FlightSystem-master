@@ -26,7 +26,7 @@ public class UserServiceimpl implements UserService {
             User storedUser = optionalUser.get();
             // 验证密码是否匹配
             if (HashUtil.verifyPassword(user.getPasswd(), storedUser.getPasswd())) {
-                // 登录成功，可以进行后续操作，如生成token等
+                // 登录成功
                 return storedUser; // 返回登录成功状态码
             } else {
                 throw new NoLogException(RespBeanEnum.USER_LOGIN_FAILED); // 密码错误

@@ -167,7 +167,7 @@ export  default {
            ApideleteFlightById(id)
 
                 .then((res) => {
-                    if (res.data.code === 200) {
+                    if (res.code === 200) {
                         this.$message.success({
                             title: "Successfully Deleted",
                             message: "删除成功",
